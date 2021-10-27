@@ -37,15 +37,20 @@ class LoginSignup extends Component {
                 </div>
                 <div className="main1-frame">
                     <div className="main1-title">
-                        <Button style={{ textDecoration: "none", color: "black" }} handleOpen={this.state={handleOpen:true}} >
+                        <Link style={{ textDecoration: "none", color: "black" }} to ={'/'}>
                             <span className="btn text " >LOGIN </span>
-                        </Button>
-                        <Button style={{ textDecoration: "none", color: "black" }}  handleOpen={this.state={handleOpen:false}} >
+                        </Link>
+                        <Link style={{ textDecoration: "none", color: "black" }} to={'/Signup'}  >
                             <span className="btn text2"  >SIGNUP </span>
-                        </Button>
+                        </Link>
                     </div>
                     <div className="LoginSign-box">
-                        {this.handleOpen ? <Signup/> : <Login/>}
+                        {/* {this.handleOpen ? <Login/> : <Signup/>} */}
+                        <Switch>
+                            <Route exact path="/" component={Login} />
+                            <Route exact path="/Signup" component={Signup} />      
+                        </Switch>
+
                     </div>
 
                 </div>
