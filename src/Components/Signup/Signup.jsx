@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import '../login/login.scss'
-import {Redirect} from "react-router-dom";
+import { Snackbar, IconButton } from '@mui/material';
+import UserServices from '../../services/userservices';
 
+const obj = new UserServices();
 
 
 class Signup extends Component {
@@ -11,17 +13,19 @@ class Signup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+
             name: "",
             email: "",
             password: "",
-            mobileno : "",
+            mobileno: "",
             nameError: false,
             emailError: false,
             passError: false,
             mobileError: false,
+            snackbaropen: false,
+            snackbarmsg: ""
 
-       
+
         }
     }
 
@@ -29,103 +33,141 @@ class Signup extends Component {
     isValidated = () => {
         let isError = false;
         const errors = this.state;
-        errors.nameError = this.state.name !=='' ? false : true;
-        errors.emailError = this.state.email !=='' ? false : true;
-        errors.passError = this.state.password !== ''? false : true;
+        errors.nameError = this.state.name !== '' ? false : true;
+        errors.emailError = this.state.email !== '' ? false : true;
+        errors.passError = this.state.password !== '' ? false : true;
         errors.mobileError = this.state.mobileno !== '' ? false : true;
-      
+
         this.setState({
             ...errors
         })
 
         return isError = errors.nameError || errors.emailError || errors.passError || errors.mobileError
     }
-    
+
     next = () => {
         var isValid = this.isValidated();
-        if(!isValid) {
+        if (!isValid) {
             console.log("Validation Sucessfull!");
-            
+            let signupObj = {
+                "fullName": this.state.name,
+                "email": this.state.email,
+                "password": this.state.password,
+                "phone": this.state.mobileno,
+            }
+            console.log(signupObj);
+            obj.registration(signupObj).then((response) => {
+                console.log(response);
+                localStorage.setItem("token", response.data.id);
+                this.setState({ snackbaropen: true, snackbarmsg: "Registered Successfully!" })
+                var timer  = setTimeout(function(){
+                    window.location = '/'
+               }, 1000);
+            }).catch((error) => {
+                console.log(error);
+                this.setState({ snackbaropen: true, snackbarmsg: "Registration Failed!" })
+            })
+        } else {
+            this.setState({ snackbaropen: true, snackbarmsg: "Please enter data!" })
+
         }
     }
 
     change = (e) => {
         console.log(e.target.value);
         this.setState({
-            [e.target.name] : e.target.value
+            [e.target.name]: e.target.value
         });
     }
-    
-   
+
+    snackbarClose = (event) => {
+        this.setState({ snackbaropen: false });
+    };
+
+
 
 
     render() {
-       
-       
+
+
         return (
             <div>
+                <Snackbar
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                    open={this.state.snackbaropen}
+                    autoHideDuration={3000}
+                    onClose={this.snackbarClose}
+
+                    message={<span id="message_id">{this.state.snackbarmsg}</span>}
+                    action={[
+                        <IconButton key="close" aria-label="Close" color="inherit" onClick={this.snackbarClose}>
+                            X
+                        </IconButton>
+                    ]}
+                />
+
                 <div className="login-frame">
                     <form className="login-form">
                         <div className="reg-input">
                             <TextField
-                              
+
                                 id="FullName"
                                 type="text"
                                 name="name"
                                 label="FullName"
                                 variant="outlined"
                                 size="small"
-                                error = {this.state.nameError}
-                                onChange = {e => this.change(e)}
-                                helperText = {this.state.nameError ? "Enter fullName" : ''} 
-                              
-                                
-                               />
+                                error={this.state.nameError}
+                                onChange={e => this.change(e)}
+                                helperText={this.state.nameError ? "Enter fullName" : ''}
+
+
+                            />
                             <TextField
-                             
+
                                 id="Email"
                                 type="text"
                                 name="email"
                                 label="Email"
                                 variant="outlined"
                                 size="small"
-                                error = {this.state.emailError}
-                                onChange = {e => this.change(e)}
-                                helperText = {this.state.emailError ? "Enter an email" : ''} 
-                             
-                               
+                                error={this.state.emailError}
+                                onChange={e => this.change(e)}
+                                helperText={this.state.emailError ? "Enter an email" : ''}
+
+
                             />
                             <TextField
-                                       
+
                                 id="password"
                                 type="password"
                                 name="password"
                                 label="Password"
                                 variant="outlined"
                                 size="small"
-                                error = {this.state.passError}
-                                onChange = { e=> this.change(e)}
-                                helperText={this.state.passError ?"Enter a password" : ''}
-                              
-                               
+                                error={this.state.passError}
+                                onChange={e => this.change(e)}
+                                helperText={this.state.passError ? "Enter a password" : ''}
+
+
                             />
                             <TextField
-                                  
+
                                 id="Mobileno"
                                 type="test"
                                 name="mobileno"
                                 label="Mobileno"
                                 variant="outlined"
                                 size="small"
-                                error = {this.state.mobileError}
-                                onChange = { e=> this.change(e)}
-                                helperText={this.state.mobileError ?"Enter a mobile number" : ''}
-                             
+                                error={this.state.mobileError}
+                                onChange={e => this.change(e)}
+                                helperText={this.state.mobileError ? "Enter a mobile number" : ''}
+
                             />
 
                         </div>
                         <div className="Login-button">
-                            <Button className="button1" variant="contained"  onClick={this.next}>
+                            <Button className="button1" variant="contained" onClick={this.next}>
                                 Signup
                             </Button>
                         </div>
@@ -133,7 +175,7 @@ class Signup extends Component {
                     </form>
                 </div>
 
-            </div>
+            </div >
         );
     }
 }

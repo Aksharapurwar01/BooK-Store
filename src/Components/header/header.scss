@@ -1,0 +1,68 @@
+@mixin icon($display, $direction, $jst-cont) {
+    display: $display;
+    flex-direction: $direction;
+    justify-content: $jst-cont;
+}
+
+
+.app-header {
+    background-color: #8F2B2F !important;
+}
+
+.header-title {
+    display: flex;
+    width: 130px;
+    justify-content: space-around;
+    margin-left: 127px;
+}
+
+
+.book-text {
+    font-size: 20px;
+}
+
+.profile {
+    @include icon(flex, column, null)
+}
+
+.cart {
+    @include icon(flex, column, null)
+}
+
+.right-header {
+    width: 200px;
+    margin-left: 190px;
+    @include icon(flex, null, space-around)
+}
+
+
+
+.css-96uuyl {
+    position: relative;
+    border-radius: 4px;
+    background-color: white !important;
+    margin-right: 20px;
+    margin-left: 0;
+    width: 100% !important;
+}
+
+.css-yz9k0d-MuiInputBase-input {
+    color: grey !important;
+}
+
+
+
+.css-1iz4iln {
+    color: gray !important;
+}
+
+
+
+@media screen and (min-width: 600px) {
+
+    .css-96uuyl {
+        margin-left: 24 px;
+        width: 490px !important;
+    }
+
+}

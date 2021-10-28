@@ -7,7 +7,7 @@
 }
 
 .login-form {
-    @include align(flex, center, column, 333px);
+    @include align(flex, center, column, 333px); //display ,jutify,direction,height
     height: 300px;
 }
 
@@ -39,12 +39,16 @@
     background-color: #A03037 !important;
     border-radius: 3px !important;
     opacity: 1 !important;
+    color: white !important;
+    font-size: 15px !important;
 }
 
 .button2 {
     background: #4266B2 0% 0% no-repeat padding-box !important;
     border-radius: 3px !important;
     opacity: 1 !important;
+    color: white !important;
+    font-size: 15px !important;
 }
 
 .button3 {
@@ -52,4 +56,13 @@
     border: 1px solid #E4E4E4 !important;
     border-radius: 3px !important;
     opacity: 1 !important;
+    font-size: 15px !important;
+}
+
+.MuiFormLabel-root.Mui-focused{
+    color: #A03037 !important;
+}
+
+.MuiOutlinedInput-root{
+    border-color: #A03037 !important;
 }

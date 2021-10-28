@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import Login from '../../Components/login/login'
 import Signup from '../../Components/Signup/Signup'
-import Button from '@material-ui/core/Button';
 import womenpic from '../../assests/Login-Signup-Dashboard/2766594.png';
 import {
-    BrowserRouter,
     Switch,
     Route,
     Link
 } from "react-router-dom";
 import './LoginSignup.scss';
-import { Redirect } from "react-router-dom"
+import homee from '../home/home';
 
 class LoginSignup extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            handleOpen: true
+            handleOpen: true,
+            active:true
            
         }
     }
@@ -31,13 +30,13 @@ class LoginSignup extends Component {
             <div className="main-frame">
                 <div className="main-content">
                     <div className="main-title">
-                        <img className="img-disp" src={womenpic}></img>
-                        <span className="onlineShopping" style={{ marginTop: '16px' }}>Online Book Shopping</span>
+                        <img className="img-women" src={womenpic}></img>
+                        <span className="onlineShopping">Online Book Shopping</span>
                     </div>
                 </div>
                 <div className="main1-frame">
                     <div className="main1-title">
-                        <Link style={{ textDecoration: "none", color: "black" }} to ={'/'}>
+                        <Link className="loginlink"  to  ={'/'} >
                             <span className="btn text " >LOGIN </span>
                         </Link>
                         <Link style={{ textDecoration: "none", color: "black" }} to={'/Signup'}  >
@@ -48,7 +47,10 @@ class LoginSignup extends Component {
                         {/* {this.handleOpen ? <Login/> : <Signup/>} */}
                         <Switch>
                             <Route exact path="/" component={Login} />
-                            <Route exact path="/Signup" component={Signup} />      
+                            <Route exact path="/Signup" component={Signup} />
+                           
+
+                                  
                         </Switch>
 
                     </div>
@@ -62,3 +64,5 @@ class LoginSignup extends Component {
 }
 
 export default LoginSignup;
+
+// className={"btn-group pull-right " + (this.props.showBulkActions ? 'show' : 'hidden')}

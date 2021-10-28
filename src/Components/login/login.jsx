@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import TextField from '@material-ui/core/TextField';
 import './login.scss';
 import Button from '@material-ui/core/Button';
-import { Redirect } from "react-router-dom";
+import UserServices from '../../services/userservices';
+import { Snackbar, IconButton } from '@mui/material';
+
+const obj = new UserServices();
+
 
 
 
@@ -27,7 +31,7 @@ export class login extends Component {
         errors.passError = this.state.password !== '' ? false : true;
 
         this.setState({
-            ...errors
+            ...errors  //
         })
 
         return isError = errors.emailError || errors.passError
@@ -36,7 +40,27 @@ export class login extends Component {
     next = () => {
         var isValid = this.isValidated();
         if (!isValid) {
-            console.log("Validation Sucessfull!");
+            console.log("Validation Sucessfull login!");
+            let signinObj = {
+                "email": this.state.email,         //values from api
+                "password": this.state.password,
+            }
+            console.log(signinObj);
+            obj.login(signinObj).then((response) => {
+                console.log(response);
+                localStorage.setItem("token", response.data.id);
+                this.setState({ snackbaropen: true, snackbarmsg: "Login Successful!" })
+                var timer  = setTimeout(function(){
+                    window.location = '/home'
+               }, 1000);
+            }).catch((error) => {
+                console.log(error);
+                this.setState({ snackbaropen: true, snackbarmsg: "Login Failed!" })
+            })
+        } else {
+            this.setState({ snackbaropen: true, snackbarmsg: "Please enter data!" })
+
+
         }
     }
 
@@ -47,12 +71,30 @@ export class login extends Component {
         });
     }
 
+    snackbarClose = (event) => {
+        this.setState({ snackbaropen: false });
+    };
+
 
 
     render() {
-        
+
         return (
             <div>
+                <Snackbar
+                    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                    open={this.state.snackbaropen}
+                    autoHideDuration={3000}
+                    onClose={this.snackbarClose}
+
+                    message={<span id="message_id">{this.state.snackbarmsg}</span>}
+                    action={[
+                        <IconButton key="close" aria-label="Close" color="inherit" onClick={this.snackbarClose}>
+                            X
+                        </IconButton>
+                    ]}
+                />
+
                 <div className="login-main">
                     <form className="login-form">
                         <div className="login-input">
@@ -64,9 +106,9 @@ export class login extends Component {
                                 label="User Name"
                                 variant="outlined"
                                 size="small"
-                                error = {this.state.emailError}
-                                onChange = {e => this.change(e)}
-                                helperText = {this.state.emailError ? "Enter an email" : ''} 
+                                error={this.state.emailError}
+                                onChange={e => this.change(e)}
+                                helperText={this.state.emailError ? "Enter an email" : ''}
 
                             />
                             <TextField
@@ -77,9 +119,9 @@ export class login extends Component {
                                 label="Password"
                                 variant="outlined"
                                 size="small"
-                                error = {this.state.passError}
-                                onChange = { e=> this.change(e)}
-                                helperText={this.state.passError ?"Enter a password" : ''}
+                                error={this.state.passError}
+                                onChange={e => this.change(e)}
+                                helperText={this.state.passError ? "Enter a password" : ''}
 
                             />
                             <div className="passworddchange">
@@ -88,7 +130,7 @@ export class login extends Component {
 
                         </div>
                         <div className="Login-button">
-                            <Button className="button1" variant="contained" onClick = {this.next} >
+                            <Button className="button1" variant="contained" onClick={this.next} color="white" >
                                 Login
                             </Button>
                         </div>
