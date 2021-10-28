@@ -22,27 +22,26 @@
 }
 
 .profile {
-    @include icon(flex, column, null)
+    @include icon(flex, column, center);
+    text-align: center !important;
 }
 
 .cart {
-    @include icon(flex, column, null)
+    @include icon(flex, column, center);
+    text-align: center !important;
 }
 
 .right-header {
     width: 200px;
     margin-left: 190px;
-    @include icon(flex, null, space-around)
+    @include icon(flex, row, space-around)
 }
 
 
 
 .css-96uuyl {
-    position: relative;
-    border-radius: 4px;
+    
     background-color: white !important;
-    margin-right: 20px;
-    margin-left: 0;
     width: 100% !important;
 }
 
@@ -61,7 +60,7 @@
 @media screen and (min-width: 600px) {
 
     .css-96uuyl {
-        margin-left: 24 px;
+        margin-left: 24px;
         width: 490px !important;
     }
 
