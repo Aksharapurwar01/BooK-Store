@@ -66,7 +66,7 @@ class LoginSignup extends Component {
                         {/* {this.handleOpen ? <Login/> : <Signup/>} */}
                         <Switch>
                             <Route exact path="/" component={Login} />
-                            <Route exact path="//Signup" component={Signup} />
+                            <Route exact path="/Signup" component={Signup} />
 
 
 

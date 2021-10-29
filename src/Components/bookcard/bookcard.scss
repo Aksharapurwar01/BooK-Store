@@ -3,7 +3,7 @@
 .bookcard {
     display: flex;
     flex-wrap: wrap;
-    padding: 40px;
+    margin: 4%;
     justify-content: center;
     align-items: center;
 
@@ -11,8 +11,8 @@
 
 .booksheader {
     display: flex;
-    margin-top: 4rem;
-    margin-left: 4.5rem;
+    margin-top: 5rem;
+    margin-left: 12%;
 }
 
 .booksheader p {
@@ -26,7 +26,7 @@
 .books-main {
     width: 230px;
     min-height: 260px;
-    margin: 10px;
+    margin: 15px;
 }
 
 .book-image {
@@ -114,4 +114,9 @@
 
 .css-46bh2p-MuiCardContent-root {
     background-color: #F5F5F5 !important;
+}
+
+.css-wjh20t-MuiPagination-ul{
+    justify-content: center !important;
+    margin-bottom: 4% !important;
 }

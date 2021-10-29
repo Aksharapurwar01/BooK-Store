@@ -13,7 +13,8 @@
     display: flex;
     width: 130px;
     justify-content: space-around;
-    margin-left: 127px;
+    margin-left: 10%;
+    margin-right: 2%;
 }
 
 
@@ -60,8 +61,8 @@
 @media screen and (min-width: 600px) {
 
     .css-96uuyl {
-        margin-left: 24px;
-        width: 490px !important;
+        margin-left: 8%;
+        width: 500px !important;
     }
 
 }
