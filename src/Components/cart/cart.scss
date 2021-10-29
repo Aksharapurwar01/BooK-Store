@@ -1,0 +1,128 @@
+@mixin flex($disp, $justify, $direction, $width, $height, $margintop) {
+    margin-top: $margintop;
+    display: $disp;
+    flex-direction: $direction;
+    justify-content: $justify;
+    height: $height;
+    width: $width;
+  
+}
+
+$margin-left: 162px;
+$border: 1px solid #d9cccc;
+
+.Cartt-main {
+    @include flex(flex,center ,column ,null ,100% ,100px );
+    align-items: center;
+}
+
+.title {
+    width: 81%;
+}
+.Cartt-content {
+    width: 78%;
+    min-height: 100px;
+    border: $border;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.btn-content {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 37px;
+}
+
+.btn-place {
+    background-color: #3371b5 !important;
+    color: white !important;
+}
+
+
+.main-cart {
+    display: flex;
+}
+.bag-text {
+    @include flex(flex, space-evenly, column, 300px, 161px, null);
+}
+
+.cart-title {
+    font-weight: 600;
+    font-size: 20px;
+}
+.cart-bookAuthor {
+    font-size: 15px;
+    height: 12px;
+    color: #a49595;
+    font-weight: 600;
+}
+.price {
+    font-weight: bold;
+}
+.text-content{
+    width: 180px;
+}
+
+.btn-content {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 37px;
+}
+.btn-place {
+    background-color: #3371b5 !important;
+    color: white !important;
+}
+.address {
+    @include flex(flex, center, column, 79%, 74px, 12px);
+    border: $border;
+    padding-left: 23px;
+    
+}
+.order {
+    @include flex(flex, center, column, 78%, 30px, 12px);
+    border: $border;
+    padding: 23px;
+    margin-bottom: 200px;
+}
+.address-details {
+    @include flex(flex, space-evenly, column, 78%, 552px, null);
+    border: $border;
+    margin-top: 12px;
+    padding: 23px;
+    margin-bottom: 5%;
+}
+.customer-deatiles {
+    display: flex;
+    justify-content: space-between;
+}
+.details-btn {
+    color: #a03037 !important;
+}
+.customer-content-names {
+    @include flex(flex, space-between, null, 460px, null, null);
+}
+.heading {
+    @include flex(flex, space-between, null, 158px, null, null);
+}
+.address-feild {
+    width: 462px;
+    height: 74px !important;
+}
+.city-state {
+    display: flex;
+    width: 464px;
+    justify-content: space-between;
+}
+.order-content {
+    width: 78%;
+    min-height: 300px;
+    border: 1px solid #d9cccc;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 164px;
+}
+
+.MuiFormLabel-root{
+    color: black !important;
+    font-weight: 500 !important;
+}

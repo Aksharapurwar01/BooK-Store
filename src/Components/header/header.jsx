@@ -20,6 +20,13 @@ import pic1 from '../../assests/Login-Signup-Dashboard/education.svg';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -183,7 +190,7 @@ export default function PrimarySearchAppBar() {
                             <span>Profile</span>
                         </div>
                         <div className="cart">
-                           <ShoppingCartOutlinedIcon/>
+                            <Link to={'/cart'}><ShoppingCartOutlinedIcon /></Link>
                             <span>Cart</span>
                         </div>
                     </div>
@@ -191,6 +198,14 @@ export default function PrimarySearchAppBar() {
             </AppBar>
             {renderMobileMenu}
             {renderMenu}
+            {/* <Switch>
+                <Route exact path="/home/cart" component={Cart} />
+                
+
+
+
+            </Switch> */}
         </Box>
+
     );
 }
