@@ -185,10 +185,10 @@ export default function PrimarySearchAppBar() {
                         </Search>
                     </div>
                     <div className="right-header">
-                        <div className="profile">
+                        {/* <div className="profile">
                             <PersonOutlineIcon />
                             <span>Profile</span>
-                        </div>
+                        </div> */}
                         <div className="cart">
                             <Link to={'/cart'}><ShoppingCartOutlinedIcon /></Link>
                             <span>Cart</span>

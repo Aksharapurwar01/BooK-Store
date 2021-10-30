@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Header from '../header/header';
 import Footer from '../Footer/footer';
 import './cart.scss';
-import Cartdeatils from './cartdeatils';
+import Cartdeatils from '../cart/cartdeatils';
 import Button from '@mui/material/Button';
 
 export class Cart extends Component {

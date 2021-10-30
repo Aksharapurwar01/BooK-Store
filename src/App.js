@@ -6,6 +6,7 @@ import {
   Route,Redirect} from "react-router-dom";
   import home from './pages/home/home';
 import Cartt from './Components/cart/Cartt';
+import OrderSuccess from './Components/order success/order';
 
 function App() {
   return (
@@ -19,10 +20,11 @@ function App() {
           <Route path="/loginsignup" component={LoginSignup} />
            
           
-          <Route path="/home" component ={home}>
+          <Route exact path="/home" component ={home}>
            
            </Route>
            <Route exact path="/Cart" component ={Cartt} />
+           <Route path="/orderplaced" component={OrderSuccess} />
            
            
        

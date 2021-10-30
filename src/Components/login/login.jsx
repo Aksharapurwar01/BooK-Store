@@ -4,6 +4,7 @@ import './login.scss';
 import Button from '@material-ui/core/Button';
 import UserServices from '../../services/userservices';
 import { Snackbar, IconButton } from '@mui/material';
+import { useHistory } from "react-router-dom";
 
 const obj = new UserServices();
 
@@ -48,11 +49,11 @@ export class login extends Component {
             console.log(signinObj);
             obj.login(signinObj).then((response) => {
                 console.log(response);
-                localStorage.setItem("token", response.data.id);
+                localStorage.setItem("token", response.data.result.accessToken);
                 this.setState({ snackbaropen: true, snackbarmsg: "Login Successful!" })
-                var timer  = setTimeout(function(){
-                    window.location = '/home'
-               }, 1000);
+               
+                   this.history.push('/home');
+               
             }).catch((error) => {
                 console.log(error);
                 this.setState({ snackbaropen: true, snackbarmsg: "Login Failed!" })

@@ -13,6 +13,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import CartDetails from './cartdeatils';
 
 
 
@@ -41,7 +42,8 @@ export class Cartt extends Component {
                 <div className="Cartt-main">
                     <div className="title">Home/My Cart</div>
                     <div className="Cartt-content">
-                        <div >My Cart 1</div>
+                        <div >My Cart (1)</div>
+                        <CartDetails/>
 
                         <div className="btn-content">
                             <Button variant="contained" className="btn-place" onClick={this.handleClick}  >

@@ -17,10 +17,10 @@ $border: 1px solid #d9cccc;
 }
 
 .title {
-    width: 81%;
+    width: 74%;
 }
 .Cartt-content {
-    width: 78%;
+    width: 70%;
     min-height: 100px;
     border: $border;
     padding: 20px;
@@ -38,9 +38,14 @@ $border: 1px solid #d9cccc;
     color: white !important;
 }
 
-
-.main-cart {
+//  cart details
+.cart-details {
     display: flex;
+}
+
+.img-book {
+    width: 94px;
+    margin: 20px 20px 10px 5px;
 }
 .bag-text {
     @include flex(flex, space-evenly, column, 300px, 161px, null);
@@ -63,6 +68,8 @@ $border: 1px solid #d9cccc;
     width: 180px;
 }
 
+//  cart details
+
 .btn-content {
     display: flex;
     justify-content: flex-end;
@@ -73,19 +80,19 @@ $border: 1px solid #d9cccc;
     color: white !important;
 }
 .address {
-    @include flex(flex, center, column, 79%, 74px, 12px);
+    @include flex(flex, center, column, 72%, 74px, 12px);
     border: $border;
     padding-left: 23px;
     
 }
 .order {
-    @include flex(flex, center, column, 78%, 30px, 12px);
+    @include flex(flex, center, column, 70%, 30px, 12px);
     border: $border;
     padding: 23px;
     margin-bottom: 200px;
 }
 .address-details {
-    @include flex(flex, space-evenly, column, 78%, 552px, null);
+    @include flex(flex, space-evenly, column, 72%, 552px, null);
     border: $border;
     margin-top: 12px;
     padding: 23px;
@@ -99,14 +106,14 @@ $border: 1px solid #d9cccc;
     color: #a03037 !important;
 }
 .customer-content-names {
-    @include flex(flex, space-between, null, 460px, null, null);
+    @include flex(flex, space-between, null, 50%, null, null);
 }
 .heading {
     @include flex(flex, space-between, null, 158px, null, null);
 }
 .address-feild {
-    width: 462px;
-    height: 74px !important;
+    width: 50%;
+    height: 70px !important;
 }
 .city-state {
     display: flex;
@@ -125,4 +132,12 @@ $border: 1px solid #d9cccc;
 .MuiFormLabel-root{
     color: black !important;
     font-weight: 500 !important;
+}
+
+@media screen and (max-width:450px) {
+
+    .customer-content-names {
+        @include flex(flex, space-between, column, 460px, null, null);
+    }
+    
 }
