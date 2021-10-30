@@ -11,10 +11,20 @@ import { Redirect } from 'react-router';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 
+
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import CartDetails from './cartdeatils';
+import bookpic from '../../assests/bookcard/Imagebook.png';
+import {
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
+import UserServices from '../../services/userservices';
+
+const obj = new UserServices();
 
 
 
@@ -24,8 +34,23 @@ export class Cartt extends Component {
         super(props)
 
         this.state = {
+            book: [],
             open: false,
             openCon: false,
+            FullName: "",
+            Number: "",
+            PinCode: "",
+            Locality: "",
+            Address: "",
+            City: "",
+            State: "",
+            nameError: false,
+            numberError: false,
+            pinError: false,
+            locError: false,
+            addError: false,
+            cityError: false,
+            stateError: false,
         }
     }
 
@@ -33,17 +58,99 @@ export class Cartt extends Component {
         this.setState({ open: true });
     }
 
+    handleContinue = () => {
+        var isValid = this.isValidated();
+        if (!isValid) {
+            this.setState({ openCon: true });
+        }
+    }
+
+    componentDidMount() {
+        this.getCartItem();
+    }
+
+    getCartItem = () => {
+        obj.getCartItem().then((response) => {
+            console.log(response.data.result);
+            this.setState({ book: response.data.result });
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+
+
+    isValidated = () => {
+        let isError = false;
+        const errors = this.state;
+        errors.nameError = this.state.FullName !== '' ? false : true;
+        errors.numberError = this.state.Number !== '' ? false : true;
+        errors.cityError = this.state.City !== '' ? false : true;
+        errors.pinError = this.state.PinCode !== '' ? false : true;
+        errors.addError = this.state.Address !== '' ? false : true;
+        errors.locError = this.state.Locality !== '' ? false : true;
+        errors.stateError = this.state.State !== '' ? false : true;
+
+        this.setState({
+            ...errors
+        })
+
+        return isError = errors.nameError || errors.numberError || errors.pinError || errors.addError || errors.locError || errors.stateError || errors.cityError
+    }
+
+    change = (e) => {
+        console.log(e.target.value);
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    }
+
 
 
     render() {
+        const cartDetails = this.state.book.map((value, index) => {
+            return (
+                <div className="cart-details">
+                    <div>
+                        <img className="img-book" src={bookpic} />
+                    </div>
+                    <div className="text-content">
+                        <div className="bag-text">
+                            <div className="cart-title">{value.product_id.bookName}</div>
+                            <div className="cart-bookAuthor">by {value.product_id.author}</div>
+                            <div className="price">Rs. {value.product_id.price}</div>
+                        </div>
+
+                    </div>
+                </div>
+            )
+        });
+
+        const orderDetails = this.state.book.map((value, index) => {
+            return (
+                <div className="cart-details">
+                    <div>
+                        <img className="img-book" src={bookpic} />
+                    </div>
+                    <div className="text-content">
+                        <div className="bag-text">
+                            <div className="cart-title">{value.product_id.bookName}</div>
+                            <div className="cart-bookAuthor">by {value.product_id.author}</div>
+                            <div className="price">Rs. {value.product_id.price}</div>
+                        </div>
+
+                    </div>
+                </div>
+
+            )
+        });
         return (
             <div>
                 <Header />
                 <div className="Cartt-main">
                     <div className="title">Home/My Cart</div>
                     <div className="Cartt-content">
-                        <div >My Cart (1)</div>
-                        <CartDetails/>
+                        <div >My Cart  ({this.state.book.length})</div>
+                        {cartDetails}
 
                         <div className="btn-content">
                             <Button variant="contained" className="btn-place" onClick={this.handleClick}  >
@@ -60,38 +167,47 @@ export class Cartt extends Component {
                             <div className="customer-content-names">
 
                                 <div className="city">
-                                    <div><TextField
+                                    <div>
+                                        <TextField
 
-                                        size="small"
-                                        label="FullName"
-                                        type="text"
-                                        name="FullName"
-                                        variant="outlined"
+                                            size="small"
+                                            label="FullName"
+                                            type="text"
+                                            name="FullName"
+                                            variant="outlined"
+                                            error={this.state.nameError}
+                                            onChange={e => this.change(e)}
+                                            helperText={this.state.nameError ? "Enter your Name" : ''}
 
-                                    />
+                                        />
                                     </div>
                                 </div>
                                 <div className="state">
-                                    <div><TextField
+                                    <div>
+                                        <TextField
+                                            size="small"
+                                            label="Phone Number"
+                                            type="text"
+                                            name="Number"
+                                            variant="outlined"
+                                            error={this.state.numberError}
+                                            onChange={e => this.change(e)}
+                                            helperText={this.state.numberError ? "Enter Mobile Number" : ''}
 
-                                        size="small"
-                                        label="Phone Number"
-                                        type="text"
-                                        name="Number"
-                                        variant="outlined"
-
-                                    /></div>
+                                        /></div>
                                 </div>
                             </div>
                             <div className="customer-content-names">
                                 <div className="InputFields">
                                     <TextField
-
                                         size="small"
                                         label="Pin Code"
                                         type="text"
                                         name="PinCode"
                                         variant="outlined"
+                                        error={this.state.pinError}
+                                        onChange={e => this.change(e)}
+                                        helperText={this.state.pinError ? "Enter your Pincode" : ''}
 
                                     />
                                 </div>
@@ -103,6 +219,9 @@ export class Cartt extends Component {
                                         type="text"
                                         name="Locality"
                                         variant="outlined"
+                                        error={this.state.locError}
+                                        onChange={e => this.change(e)}
+                                        helperText={this.state.locError ? "Enter your Locality" : ''}
 
                                     />
                                 </div>
@@ -115,6 +234,9 @@ export class Cartt extends Component {
                                 name="Address"
                                 variant="outlined"
                                 fullWidth
+                                error={this.state.addError}
+                                onChange={e => this.change(e)}
+                                helperText={this.state.addError ? "Enter your Address" : ''}
 
                             /></div>
 
@@ -128,7 +250,11 @@ export class Cartt extends Component {
                                         type="text"
                                         name="City"
                                         variant="outlined"
-                                    /></div>
+                                        error={this.state.cityError}
+                                        onChange={e => this.change(e)}
+                                        helperText={this.state.cityError ? "Enter your City" : ''}
+                                    />
+                                    </div>
                                 </div>
                                 <div className="state">
                                     <div><TextField
@@ -138,6 +264,9 @@ export class Cartt extends Component {
                                         type="text"
                                         name="State"
                                         variant="outlined"
+                                        error={this.state.stateError}
+                                        onChange={e => this.change(e)}
+                                        helperText={this.state.stateError ? "Enter State" : ''}
 
                                     /></div>
                                 </div>
@@ -147,12 +276,12 @@ export class Cartt extends Component {
                             </div>
                             <div>
                                 <FormControl component="fieldset">
-                                 
+
                                     <RadioGroup row aria-label="gender" name="row-radio-buttons-group">
                                         <FormControlLabel value="work" control={<Radio />} label="Work" />
                                         <FormControlLabel value="home" control={<Radio />} label="Home" />
                                         <FormControlLabel value="other" control={<Radio />} label="Other" />
-                                       
+
                                     </RadioGroup>
                                 </FormControl>
                             </div>
@@ -174,9 +303,24 @@ export class Cartt extends Component {
 
                     }
 
-                    <div className="order" >
-                        Order Summery
-                    </div>
+                    {this.state.openCon ?
+
+                        <div className="Cartt-content">
+                            <div >Order Summery</div>
+                            {orderDetails}
+
+                            <div className="btn-content">
+                                <Link to={'/orderplaced'}><Button variant="contained" className="btn-place" onClick={this.handleContinue}  >
+                                    Checkout
+                                </Button></Link>
+                            </div>
+                        </div>
+                        :
+                        <div className="order" >
+                            Order Summary
+                        </div>
+                    }
+
 
                 </div>
                 <Footer />

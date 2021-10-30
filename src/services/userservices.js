@@ -29,6 +29,11 @@ class UserServices {
         return response;   
     }
 
+    getCartItem(data) {
+        let response = obj.getMeth(`${baseurl}get_cart_items`, headerconfig);
+        return response;
+    }
+
     
 
   

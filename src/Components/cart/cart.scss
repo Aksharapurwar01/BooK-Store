@@ -25,6 +25,7 @@ $border: 1px solid #d9cccc;
     border: $border;
     padding: 20px;
     margin-top: 20px;
+    margin-bottom: 10%;
 }
 
 .btn-content {
@@ -92,11 +93,11 @@ $border: 1px solid #d9cccc;
     margin-bottom: 200px;
 }
 .address-details {
-    @include flex(flex, space-evenly, column, 72%, 552px, null);
+    @include flex(flex, space-evenly, column, 70%, 552px, null);
     border: $border;
     margin-top: 12px;
     padding: 23px;
-    margin-bottom: 5%;
+    margin-bottom: 1%;
 }
 .customer-deatiles {
     display: flex;
@@ -133,6 +134,47 @@ $border: 1px solid #d9cccc;
     color: black !important;
     font-weight: 500 !important;
 }
+
+//ORDER SUMMERY
+.order_content {
+    width: 70%;
+    min-height: 36vh;
+    border: 1px solid #d9cccc;
+   margin-bottom: 10%;
+    
+}
+.header_detail2 {
+    font-weight: 600;
+    font-size: 18px;
+    
+}
+.main_cart2 {
+    display: flex;
+}
+.bag_text2 {
+    @include flex(flex, space-evenly, column, 130%, 12vh, null);
+}
+.img_book2 {
+    width: 6vw;
+    margin: 2rem 0rem 0rem 2rem;
+}
+.text_content2 {
+    width: 28%;
+    margin-top: 1.5rem;
+}
+.btn_content3 {
+    display: flex;
+    justify-content: flex-end;
+    height: 6vh;
+    position: relative;
+    top: 10rem;
+    left: 19rem;
+}
+.btn_place3 {
+    background-color: #3371b5 !important;
+    color: white !important;
+}
+
 
 @media screen and (max-width:450px) {
 
