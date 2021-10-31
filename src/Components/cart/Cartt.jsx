@@ -56,6 +56,15 @@ export class Cartt extends Component {
         this.setState({ open: true });
     }
 
+    getCartItem = () => {
+        obj.getCartItem().then((response) => {
+            console.log(response.data.result);
+            this.setState({ book: response.data.result });
+        }).catch(error => {
+            console.log(error);
+        })
+    }
+
     handleContinue = () => {
         var isValid = this.isValidated();
         if (!isValid) {
@@ -85,14 +94,36 @@ export class Cartt extends Component {
         this.getCartItem();
     }
 
-    getCartItem = () => {
-        obj.getCartItem().then((response) => {
-            console.log(response.data.result);
-            this.setState({ book: response.data.result });
-        }).catch(error => {
+    OrderPlaced = () => {
+        let orderDetails = [];
+        this.state.book.map((value) => {
+            let arr = {
+                "product_id": value.product_id._id,
+                "product_name": value.product_id.bookName,
+                "product_quantity": value.quantityToBuy,
+                "product_price": value.product_id.price
+            };
+            orderDetails.push(arr);
+        })
+    
+        let data = {
+            orders: orderDetails,
+        };
+        console.log("DATA ORDER SUCCES", data);
+        
+        obj.orderItem(data).then((response) => {
+            
+            console.log(response);
+            console.log("DATA ORDER SUCCES", data);
+    
+        }).catch((error) => {
             console.log(error);
         })
+    
     }
+    
+
+  
 
 
     isValidated = () => {
@@ -326,7 +357,7 @@ export class Cartt extends Component {
                             {orderDetails}
 
                             <div className="btn-content">
-                                <Link style={{ textDecoration: 'none' }} to={'/orderplaced'}><Button variant="contained" className="btn-place" onClick={this.handleContinue}  >
+                                <Link style={{ textDecoration: 'none' }} to={'/orderplaced'}><Button variant="contained" className="btn-place" onClick= {this.OrderPlaced}  >
                                     Checkout
                                 </Button></Link>
                             </div>

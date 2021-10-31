@@ -34,8 +34,8 @@
 
 .right-header {
     width: 200px;
-    margin-left: 190px;
-    @include icon(flex, row, space-around)
+    margin-left: 20%;
+    @include icon(flex, row, null);
 }
 
 
@@ -75,4 +75,27 @@
         width: 500px !important;
     }
 
+}
+
+@media screen and (max-width:450px) {
+
+    .right-header{
+        margin-left: 0px;
+        width: 10%;
+    }
+
+    .css-96uuyl {
+        margin-left: 0%;
+        width: 180px!important;
+    }
+
+    .header-title{
+        margin-left: 0%;
+        width: 10%;
+    }
+
+    .book-text{
+        display: none;
+    }
+    
 }
