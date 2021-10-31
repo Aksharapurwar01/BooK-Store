@@ -60,9 +60,9 @@ class Signup extends Component {
                 console.log(response);
                 localStorage.setItem("token", response.data.id);
                 this.setState({ snackbaropen: true, snackbarmsg: "Registered Successfully!" })
-                var timer  = setTimeout(function(){
-                    window.location = '/'
-               }, 1000);
+            //     var timer  = setTimeout(function(){
+            //         window.location = '/'
+            //    }, 1000);
             }).catch((error) => {
                 console.log(error);
                 this.setState({ snackbaropen: true, snackbarmsg: "Registration Failed!" })

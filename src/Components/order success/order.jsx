@@ -4,21 +4,32 @@ import Footer from '../Footer/footer';
 import './ordersuccess.scss';
 import Success from '../../assests/success.png';
 import Button from '@material-ui/core/Button';
+import { Redirect } from 'react-router-dom';
 
 class OrderSuccess extends Component {
     constructor(props) {
         super(props)
     
         this.state = {
+
+            redirect: "",
              
         }
     }
 
+    // componentDidMount(){
+    //     console.log("book array",this.props.location.state.details)
+    // }
+
     continueShopping = () => {
-        window.location('/home');
+        this.setState({ redirect: "/home" });
     }
 
     render() {
+
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
         return (
             <div>
                 <Header />

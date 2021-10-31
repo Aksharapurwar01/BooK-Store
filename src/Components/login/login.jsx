@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import UserServices from '../../services/userservices';
 import { Snackbar, IconButton } from '@mui/material';
 import { useHistory } from "react-router-dom";
+import { Redirect } from 'react-router-dom';
 
 const obj = new UserServices();
 
@@ -20,6 +21,7 @@ export class login extends Component {
             password: "",
             emailError: false,
             passError: false,
+            redirect: "",
         }
 
     }
@@ -51,8 +53,7 @@ export class login extends Component {
                 console.log(response);
                 localStorage.setItem("token", response.data.result.accessToken);
                 this.setState({ snackbaropen: true, snackbarmsg: "Login Successful!" })
-               
-                   this.history.push('/home');
+                this.setState({ redirect: "/home" });
                
             }).catch((error) => {
                 console.log(error);
@@ -79,6 +80,10 @@ export class login extends Component {
 
 
     render() {
+
+        if (this.state.redirect) {
+            return <Redirect to={this.state.redirect} />
+        }
 
         return (
             <div>

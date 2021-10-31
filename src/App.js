@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,Redirect} from "react-router-dom";
-  import home from './pages/home/home';
+import home from './pages/home/home';
 import Cartt from './Components/cart/Cartt';
 import OrderSuccess from './Components/order success/order';
 
