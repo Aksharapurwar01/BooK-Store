@@ -7,11 +7,16 @@ import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import UserServices from '../../services/userservices';
+import { useState, useEffect } from 'react';
+
+const obj = new UserServices();
 
 
 function Displaybook(props) {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [bookarr, setBooks] = React.useState([]);
     const open = Boolean(anchorEl);
 
     const handleClick = (event) => {
@@ -20,6 +25,42 @@ function Displaybook(props) {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const ascending = () => {
+        let sortData = bookarr.sort((a, b) => (a.price < b.price && 1) || -1);
+        console.log(sortData);
+        setBooks(sortData);
+        handleClose();
+    };
+
+    const descending = () => {
+        let sortData = bookarr.sort((a, b) => (a.price > b.price && 1) || -1);
+        console.log(sortData);
+        setBooks(sortData);
+        handleClose();
+    };
+
+    const newArrivals = () => {
+        let sortData = bookarr.sort((a, b) => (a.bookName > b.bookName && 1) || -1);
+        console.log(sortData);
+        setBooks(sortData);
+        handleClose();
+    };
+
+      
+
+    // const displayBooks= () => {
+    //     obj.getAllbooks().then((response) => {
+    //         setBooks(response.data.result );
+    //         console.log("sort");
+    //     }).catch((error) => {
+    //         console.log(error);
+    //     });
+    // }
+
+    // useEffect(() =>{
+    //     displayBooks();
+    // },[]);  
 
 
 
@@ -53,9 +94,9 @@ function Displaybook(props) {
                                 "aria-labelledby": "basic-button",
                             }}
                         >
-                            <MenuItem onClick={handleClose}>Price: High to low</MenuItem>
-                            <MenuItem onClick={handleClose}>Price: Low to high</MenuItem>
-                            <MenuItem onClick={handleClose}>Newest arivals</MenuItem>
+                            <MenuItem value ="asec" onClick={ascending} >Price: High to low</MenuItem>
+                            <MenuItem value="dsec" onClick={descending}>Price: Low to high</MenuItem>
+                            <MenuItem value="new_arri" onClick={newArrivals}>A-Z</MenuItem>
                         </Menu>
                     </div>
                 </div>

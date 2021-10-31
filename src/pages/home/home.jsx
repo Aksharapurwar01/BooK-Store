@@ -16,13 +16,15 @@ export class home extends Component {
         }
     }
 
-    displayBook = () => {
+    displayBook = (props) => {
         obj.getAllbooks()  //getbooks function
             .then((response) => {
                 this.setState({
                     bookarr: response.data.result  //result contains id,title,description,...
                 })
+                props.setBooks(response.data.result );
             })
+
             .catch((error) => {
                 console.log(error);
             });
@@ -36,7 +38,7 @@ export class home extends Component {
         return (
             <div>
                 <Header/>
-                <Displaybook bookarr = {this.state.bookarr} displayBook={this.displayBook}/>
+                <Displaybook bookarr = {this.state.bookarr} displayBook={this.displayBook} />
 
                 <Footer/>
                 

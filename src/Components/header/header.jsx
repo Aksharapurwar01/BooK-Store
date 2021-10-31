@@ -61,7 +61,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar(props) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -184,7 +184,7 @@ export default function PrimarySearchAppBar() {
                             <span>Profile</span>
                         </div> */}
                         <div className="cart">
-                            <Badge badgeContent={3} color="success">
+                            <Badge badgeContent={5} color="success">
                                 <span>Cart</span>
                                 <Link to={'/cart'}><ShoppingCartOutlinedIcon /></Link>
 
