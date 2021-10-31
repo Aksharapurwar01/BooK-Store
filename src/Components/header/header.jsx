@@ -4,26 +4,20 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
 import './header.scss';
 import pic1 from '../../assests/Login-Signup-Dashboard/education.svg';
-import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
+
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link
 } from "react-router-dom";
 
@@ -190,8 +184,11 @@ export default function PrimarySearchAppBar() {
                             <span>Profile</span>
                         </div> */}
                         <div className="cart">
-                            <Link to={'/cart'}><ShoppingCartOutlinedIcon /></Link>
-                            <span>Cart</span>
+                            <Badge badgeContent={3} color="success">
+                                <span>Cart</span>
+                                <Link to={'/cart'}><ShoppingCartOutlinedIcon /></Link>
+
+                            </Badge>
                         </div>
                     </div>
                 </Toolbar>

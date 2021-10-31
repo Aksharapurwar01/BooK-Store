@@ -10,8 +10,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { Redirect } from 'react-router';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
-
-
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import CartDetails from './cartdeatils';
@@ -62,7 +60,25 @@ export class Cartt extends Component {
         var isValid = this.isValidated();
         if (!isValid) {
             this.setState({ openCon: true });
+            console.log("validation successfull");
+            let userData = {
+                "addressType": "Home",
+                "fullAddress": `${this.state.FullName},${this.state.Address},${this.state.Locality},${this.state.PinCode},${this.state.Number}`,
+                "city": this.state.City,
+                "state": this.state.State
+            }
+            obj.getCustomerDetails(userData).then((data) => {
+                console.log('data customeer details', data);
+                this.setState({ openCon: true });
+
+
+            })
+                .catch(error => {
+                    console.log('Error', error);
+                });
+
         }
+
     }
 
     componentDidMount() {
@@ -310,7 +326,7 @@ export class Cartt extends Component {
                             {orderDetails}
 
                             <div className="btn-content">
-                                <Link to={'/orderplaced'}><Button variant="contained" className="btn-place" onClick={this.handleContinue}  >
+                                <Link style={{ textDecoration: 'none' }} to={'/orderplaced'}><Button variant="contained" className="btn-place" onClick={this.handleContinue}  >
                                     Checkout
                                 </Button></Link>
                             </div>

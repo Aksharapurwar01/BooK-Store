@@ -33,7 +33,7 @@ function Displaybook(props) {
             <div>
                 <div className="booksheader">
                     <h2 >Books</h2>
-                    <p className="headerp">(128 items)</p>
+                    <p className="headerp">({props.bookarr.length})</p>
                     <div className="menudiv">
                         <Button
                             id="basic-button"

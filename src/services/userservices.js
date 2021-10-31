@@ -34,6 +34,11 @@ class UserServices {
         return response;
     }
 
+    getCustomerDetails(data) {
+        let response = obj.putMeth(`${baseurl}edit_user`, data, headerconfig);
+        return response;
+    }
+
     
 
   
