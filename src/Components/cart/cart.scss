@@ -43,14 +43,15 @@ $border: 1px solid #d9cccc;
 //  cart details
 .cart-details {
     display: flex;
+    margin: 20px;
 }
 
 .img-book {
     width: 94px;
-    margin: 20px 20px 10px 5px;
+    margin: 20px 20px 10px 10px;
 }
 .bag-text {
-    @include flex(flex, space-evenly, column, 300px, 161px, null);
+    @include flex(flex, null, column, 300px, 161px, 1rem);
 }
 
 .cart-title {
@@ -75,7 +76,7 @@ $border: 1px solid #d9cccc;
 .btn-content {
     display: flex;
     justify-content: flex-end;
-    margin-top: 37px;
+    margin-top: 20px;
 }
 .btn-place {
     background-color: #3371b5 !important;

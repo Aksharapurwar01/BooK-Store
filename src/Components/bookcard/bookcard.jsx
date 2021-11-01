@@ -5,21 +5,29 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import bookpic from '../../assests/bookcard/Imagebook.png';
 import UserServices from '../../services/userservices';
+import { Link } from 'react-router-dom';
 
 const obj = new UserServices();
 
 export default function MediaCard(props) {
     const [openButton, setOpenButton] = React.useState(true);
 
-
-
-
-
-    const addToCart = (info) => {
+     const addToCart = (info) => {
         obj.addToCart(info._id).then((response) => {
 
             console.log(response);
             setOpenButton(false);
+
+        }).catch(error => {
+            console.log("error", error);
+        })
+    }
+
+    const addToWish = (info) => {
+        obj.addToWish(info._id).then((response) => {
+
+            console.log(response);
+            
 
         }).catch(error => {
             console.log("error", error);
@@ -44,10 +52,11 @@ export default function MediaCard(props) {
                             <Button className="buttonbag" variant="contained" onClick={() => { addToCart(props.info) }} >
                                 Add To Bag
                             </Button>
-
-                            <Button className="buttonwish" variant="contained">
+                            <Link style={{textDecoration:'none'}} to="/wishlist">
+                            <Button className="buttonwish" variant="contained"onClick={() => { addToWish(props.info) }}>
                                 Wishlist
                             </Button>
+                            </Link>
                         </>
                         :
                         <Button className="buttonbag" variant="contained" fullWidth >

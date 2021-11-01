@@ -7,6 +7,7 @@ import {
 import home from './pages/home/home';
 import Cartt from './Components/cart/Cartt';
 import OrderSuccess from './Components/order success/order';
+import WishList from './Components/Wishlist/Wishlist';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
            </Route>
            <Route exact path="/Cart" component ={Cartt} />
            <Route path="/orderplaced" component={OrderSuccess} />
+           <Route path="/wishlist" component={WishList} />
            
            
        

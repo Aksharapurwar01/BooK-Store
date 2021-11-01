@@ -51,7 +51,20 @@ class UserServices {
         return response;
     }
 
-    
+    addToWish(id){
+        let response = obj.postMeth(`${baseurl}add_wish_list/${id}`,{}, headerconfig);
+        return response;   
+    }
+    getWishlist() {
+        let response = obj.getMeth(`${baseurl}get_wishlist_items`, headerconfig);
+        return response;
+    }
+    removeWishItem(id){
+        let response = obj.deleteMeth(`${baseurl}remove_wishlist_item/${id}`, headerconfig);
+        return response;
+    }
+
+
     
 
   
