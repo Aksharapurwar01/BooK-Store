@@ -16,9 +16,6 @@ export default function MediaCard(props) {
 
 
     const addToCart = (info) => {
-
-
-
         obj.addToCart(info._id).then((response) => {
 
             console.log(response);

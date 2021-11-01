@@ -16,56 +16,56 @@ const obj = new UserServices();
 function Displaybook(props) {
 
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [bookarr, setBooks] = React.useState([]);
+    const [bookarr, sortBooks] = React.useState([]);
     const open = Boolean(anchorEl);
 
-    const handleClick = (event) => {
+    const handleClick = (event) => {   //open
         setAnchorEl(event.currentTarget);
     };
-    const handleClose = () => {
+    const handleClose = () => {  //close
         setAnchorEl(null);
     };
 
     const ascending = () => {
-        let sortData = bookarr.sort((a, b) => (a.price < b.price && 1) || -1);
+        let sortData = bookarr.sort((a, b) => (a.price < b.price && 1) || -1);  //ascending
         console.log(sortData);
-        setBooks(sortData);
+        sortBooks(sortData);
         handleClose();
     };
 
     const descending = () => {
         let sortData = bookarr.sort((a, b) => (a.price > b.price && 1) || -1);
         console.log(sortData);
-        setBooks(sortData);
+        sortBooks(sortData);
         handleClose();
     };
 
-    const newArrivals = () => {
+    const az = () => {
         let sortData = bookarr.sort((a, b) => (a.bookName > b.bookName && 1) || -1);
         console.log(sortData);
-        setBooks(sortData);
+        sortBooks(sortData);
         handleClose();
     };
 
       
 
-    // const displayBooks= () => {
-    //     obj.getAllbooks().then((response) => {
-    //         setBooks(response.data.result );
-    //         console.log("sort");
-    //     }).catch((error) => {
-    //         console.log(error);
-    //     });
-    // }
+    const displayBook= () => {
+        obj.getAllbooks().then((response) => {
+            sortBooks(response.data.result );
+            console.log("sort");
+        }).catch((error) => {
+            console.log(error);
+        });
+    }
 
-    // useEffect(() =>{
-    //     displayBooks();
-    // },[]);  
-
-
+    useEffect(() =>{
+        displayBook();
+    },[]);  
 
 
-    const booksdiplay = props.bookarr.map((info) => <Bookcard info={info} displayBook={props.displayBook} />);
+
+
+    const booksdiplay = bookarr.map((info) => <Bookcard info={info} displayBook={displayBook} />);
     //mapping,arr map with values in api
 
     return (
@@ -74,7 +74,7 @@ function Displaybook(props) {
             <div>
                 <div className="booksheader">
                     <h2 >Books</h2>
-                    <p className="headerp">({props.bookarr.length})</p>
+                    <p className="headerp">({bookarr.length})</p>
                     <div className="menudiv">
                         <Button
                             id="basic-button"
@@ -94,9 +94,9 @@ function Displaybook(props) {
                                 "aria-labelledby": "basic-button",
                             }}
                         >
-                            <MenuItem value ="asec" onClick={ascending} >Price: High to low</MenuItem>
-                            <MenuItem value="dsec" onClick={descending}>Price: Low to high</MenuItem>
-                            <MenuItem value="new_arri" onClick={newArrivals}>A-Z</MenuItem>
+                            <MenuItem  onClick={ascending} >Price: High to low</MenuItem>
+                            <MenuItem  onClick={descending}>Price: Low to high</MenuItem>
+                            <MenuItem  onClick={az}>A-Z</MenuItem>
                         </Menu>
                     </div>
                 </div>

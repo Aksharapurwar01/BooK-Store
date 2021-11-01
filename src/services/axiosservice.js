@@ -10,6 +10,10 @@ class AxiosService {
     putMeth(url,data, header=false) {
         return axios.put(url, data,header);
     }
+    deleteMeth(url,header=false){
+        return axios.delete(url, header);
+
+    }
 }
 
 export default AxiosService;

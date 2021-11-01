@@ -4,19 +4,12 @@ import Footer from '../Footer/footer';
 import './cart.scss';
 import Button from '@mui/material/Button';
 import TextField from '@material-ui/core/TextField';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { Redirect } from 'react-router';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import CartDetails from './cartdeatils';
 import bookpic from '../../assests/bookcard/Imagebook.png';
 import {
-    Switch,
-    Route,
     Link
 } from "react-router-dom";
 
@@ -57,7 +50,8 @@ export class Cartt extends Component {
     handleClick = () => {
         this.setState({ open: true });
     }
-
+      
+    //get card item
     getCartItem = () => {
         obj.getCartItem().then((response) => {
             console.log(response.data.result);
@@ -66,6 +60,8 @@ export class Cartt extends Component {
             console.log(error);
         })
     }
+
+    //after validation get customer deatils
 
     handleContinue = () => {
         var isValid = this.isValidated();
@@ -95,7 +91,8 @@ export class Cartt extends Component {
     componentDidMount() {
         this.getCartItem();
     }
-
+   
+    //order pplaced
     OrderPlaced = () => {
         let orderDetails = [];
         this.state.book.map((value) => {
@@ -121,7 +118,20 @@ export class Cartt extends Component {
         }).catch((error) => {
             console.log(error);
         })
+        this.state.book.map((value) => {
+            this.removeCart(value._id);
+        })
     
+    }
+
+    //remove cart
+    removeCart = (id) => {
+        console.log(typeof(id),"cart");
+        obj.removeCartItem(id).then((response) => {
+            console.log(response);
+        }).catch((error) => {
+            console.log(error);
+        })
     }
     
 
@@ -194,7 +204,7 @@ export class Cartt extends Component {
         });
         return (
             <div>
-                <Header />
+                <Header getCartItem={this.getCartItem} />
                 <div className="Cartt-main">
                     <div className="title">Home/My Cart</div>
                     <div className="Cartt-content">

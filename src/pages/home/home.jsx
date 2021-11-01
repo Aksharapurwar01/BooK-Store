@@ -16,29 +16,29 @@ export class home extends Component {
         }
     }
 
-    displayBook = (props) => {
-        obj.getAllbooks()  //getbooks function
-            .then((response) => {
-                this.setState({
-                    bookarr: response.data.result  //result contains id,title,description,...
-                })
-                props.setBooks(response.data.result );
-            })
+    // displayBook = (props) => {
+    //     obj.getAllbooks()  //getbooks function
+    //         .then((response) => {
+    //             this.setState({
+    //                 bookarr: response.data.result  //result contains id,title,description,...
+    //             })
+    //             props.setBooks(response.data.result );
+    //         })
 
-            .catch((error) => {
-                console.log(error);
-            });
-    }
+    //         .catch((error) => {
+    //             console.log(error);
+    //         });
+    // }
 
-    componentDidMount() {
-        this.displayBook();
-    }
+    // componentDidMount() {
+    //     this.displayBook();
+    // }
 
     render() {
         return (
             <div>
                 <Header/>
-                <Displaybook bookarr = {this.state.bookarr} displayBook={this.displayBook} />
+                <Displaybook  />
 
                 <Footer/>
                 

@@ -46,6 +46,12 @@ class UserServices {
     
     }
 
+    removeCartItem(id){
+        let response = obj.deleteMeth(`${baseurl}remove_cart_item/${id}`, headerconfig);
+        return response;
+    }
+
+    
     
 
   
