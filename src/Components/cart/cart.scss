@@ -51,7 +51,7 @@ $border: 1px solid #d9cccc;
     margin: 20px 20px 10px 10px;
 }
 .bag-text {
-    @include flex(flex, null, column, 300px, 161px, 1rem);
+    @include flex(flex, null, column, 300px, 100px, 1rem);
 }
 
 .cart-title {
@@ -182,6 +182,62 @@ $border: 1px solid #d9cccc;
 
 }
 
+.count_content {
+    display: flex;
+    margin: 2px;
+    width: 100%;
+    .minus {
+        @include flex(flex, center, null, 20px, 20px, null);
+        border: $border;
+        align-items: center;
+        border-radius: 15px;
+        font-size: 23px;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: rgb(248, 244, 244);
+    }
+    .count {
+        width: 20%;
+        border: $border;
+        margin: 0px 7px 0px 7px;
+        display: flex;
+        justify-content: center;
+    }
+    .plus {
+        @include flex(flex, center, null, 20px, 20px, null);
+        border: $border;
+        align-items: center;
+        border-radius: 15px;
+        font-size: 23px;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: rgb(248, 244, 244);
+    }
+    .remove {
+        cursor: pointer;
+        margin-left: 39px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+
+    .customer-content-names {
+        @include flex(flex, space-between, null,50%, null, null);
+    }
+
+    .city{
+        margin-right: 2%;
+    }
+
+    .InputFields{
+
+        margin-right: 2%;
+
+    }
+
+    
+}
+
 @media screen and (max-width:450px) {
 
     .cart-details{
@@ -194,6 +250,25 @@ $border: 1px solid #d9cccc;
     
     .img-book{
         margin-left: 5px;
+    }
+
+    .customer-content-names {
+        @include flex(flex, space-between, column,100%, null, null);
+    }
+
+    .city{
+        margin-bottom: 5%;
+    }
+
+    .InputFields{
+
+        margin-bottom: 5%;
+
+    }
+
+    .address-feild {
+        width: 100%;
+        height: 70px !important;
     }
 }
 
@@ -216,7 +291,3 @@ $border: 1px solid #d9cccc;
     }
 }
 
-@media screen and (max-width: 770px) {
-    
-    
-}

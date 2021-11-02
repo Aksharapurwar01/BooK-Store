@@ -129,6 +129,37 @@ export class Cartt extends Component {
         console.log(typeof(id),"cart");
         obj.removeCartItem(id).then((response) => {
             console.log(response);
+            this.getCartItem();
+        }).catch((error) => {
+            console.log(error);
+        })
+    }
+
+    //count
+    decrease = (productid, quantity) => {
+        let data = {
+            "quantityToBuy": quantity - 1
+        }
+        if(data.quantityToBuy >= 1){
+            obj.cartItemQuantity(data, productid).then((response) => {
+                console.log(response);
+                this.getCartItem();
+            }).catch((error) => {
+                console.log(error);
+            })
+        }
+        else{
+            console.log("Out of Stock!")
+        }      
+    }
+
+    increase = (productid, quantity) => {
+        let data = {
+            "quantityToBuy": quantity + 1
+        }
+        obj.cartItemQuantity(data, productid).then((response) => {
+            this.getCartItem();
+            console.log(response);
         }).catch((error) => {
             console.log(error);
         })
@@ -177,6 +208,12 @@ export class Cartt extends Component {
                             <div className="cart-title">{value.product_id.bookName}</div>
                             <div className="cart-bookAuthor">by {value.product_id.author}</div>
                             <div className="price">Rs. {value.product_id.price}</div>
+                        </div>
+                        <div className="count_content">
+                            <div className="minus" onClick={()=>this.decrease(value._id, value.quantityToBuy)}>-</div>
+                            <div className="count">{value.quantityToBuy}</div>
+                            <div className="plus" onClick={()=>this.increase(value._id, value.quantityToBuy)}>+</div>
+                            <div className="remove" onClick={() => this.removeCart(value._id)}>Remove</div>
                         </div>
 
                     </div>

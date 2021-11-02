@@ -97,6 +97,18 @@
 
 }
 
+.book-buttons .buttonbag2{
+
+    
+    background-color: blue !important;
+    
+    width: 160px !important;
+
+
+} 
+
+
+
 .book-buttons .buttonwish {
 
     background-color: white !important;
@@ -129,18 +141,44 @@
 .menudiv {
     text-align: right;
     margin-top: 1.5rem;
-    margin-left: 60%;
+    margin-left: 64%;
     border: 2px;
     border-color: #0A0102;
 
 }
 
-.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
     color: #0A0102 !important;
     border-color: #0A0102 !important;
     border-radius: 2px !important;
 }
 
-.arrow{
+.arrow {
     fill: #0A0102 !important;
+}
+
+@media screen and (max-width:770px) {
+
+
+    .menudiv {
+
+        margin-left: 50%;
+
+
+    }
+}
+
+@media screen and (max-width:450px) {
+
+
+    .menudiv {
+
+        margin-left: 20%;
+
+
+    }
+
+    .css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+        font-size: 13px !important;
+    }
 }

@@ -64,6 +64,11 @@ class UserServices {
         return response;
     }
 
+    cartItemQuantity = (data, id) => {
+        let response = obj.putMeth(`${baseurl}cart_item_quantity/${id}`, data, headerconfig);
+        return response;
+    }
+
 
     
 

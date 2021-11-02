@@ -33,9 +33,9 @@
 }
 
 .right-header {
-    width: 200px;
-    margin-left: 20%;
-    @include icon(flex, row, null);
+    width: 100px;
+    margin-left: 24%;
+    @include icon(flex, row, space-evenly);
 }
 
 

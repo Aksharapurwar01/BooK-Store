@@ -59,7 +59,7 @@ export default function MediaCard(props) {
                            
                         </>
                         :
-                        <Button className="buttonbag" variant="contained" fullWidth >
+                        <Button className="buttonbag2" variant="contained" fullWidth >
                             Added To Bag
                         </Button>
 
