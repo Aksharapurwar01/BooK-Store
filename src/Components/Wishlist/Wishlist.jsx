@@ -38,7 +38,7 @@ export default class WishList extends Component {
 
     }
 
-    // getCartItems = () => {
+    // getCartItem = () => {
     //     obj.getCartItem().then((response) => {
     //         console.log(response.data.result);
     //         this.setState({ books: response.data.result });
@@ -56,7 +56,7 @@ export default class WishList extends Component {
         console.log(value)
         obj.addToCart(value, wish).then((response) => {
             console.log(response);
-            this.getCartItems();
+            // this.getCartItem();
             this.deleteWish(value);
         }).catch(error => {
             console.log(error);

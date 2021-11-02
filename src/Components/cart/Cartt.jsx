@@ -208,7 +208,7 @@ export class Cartt extends Component {
                 <div className="Cartt-main">
                     <div className="title">Home/My Cart</div>
                     <div className="Cartt-content">
-                        <div >My Cart  ({this.state.book.length})</div>
+                        <div className="mycart" >My Cart  ({this.state.book.length})</div>
                         {cartDetails}
 
                         <div className="btn-content">

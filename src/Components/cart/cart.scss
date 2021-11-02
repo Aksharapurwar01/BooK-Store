@@ -177,11 +177,46 @@ $border: 1px solid #d9cccc;
     color: white !important;
 }
 
+.mycart{
+    margin-left: 3.5%;
+
+}
 
 @media screen and (max-width:450px) {
 
-    .customer-content-names {
-        @include flex(flex, space-between, column, 460px, null, null);
+    .cart-details{
+        margin: 3px;
     }
+
+    .cart-title{
+        font-size: 15px;
+    }
+    
+    .img-book{
+        margin-left: 5px;
+    }
+}
+
+@media screen and (max-width:320px) {
+
+    .cart-details{
+        margin: 2px;
+    }
+
+    .cart-title{
+        font-size: 13px;
+    }
+    
+    .img-book{
+        margin-left: 3px;
+    }
+
+    .cart-bookAuthor{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    
     
 }

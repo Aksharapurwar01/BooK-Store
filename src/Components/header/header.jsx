@@ -15,6 +15,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import './header.scss';
 import pic1 from '../../assests/Login-Signup-Dashboard/education.svg';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 
 import {
@@ -179,13 +180,13 @@ export default function PrimarySearchAppBar(props) {
                         </Search>
                     </div>
                     <div className="right-header">
-                        {/* <div className="profile">
-                            <PersonOutlineIcon />
-                            <span>Profile</span>
-                        </div> */}
+                        <div className="profile">
+                        <Link to={'/wishlist'}><FavoriteIcon/></Link>
+                           
+                        </div>
                         <div className="cart">
                             <Badge badgeContent={5} color="success">
-                                <span>Cart</span>
+                               
                                 <Link to={'/cart'}><ShoppingCartOutlinedIcon /></Link>
 
                             </Badge>

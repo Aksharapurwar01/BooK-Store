@@ -52,11 +52,11 @@ export default function MediaCard(props) {
                             <Button className="buttonbag" variant="contained" onClick={() => { addToCart(props.info) }} >
                                 Add To Bag
                             </Button>
-                            <Link style={{textDecoration:'none'}} to="/wishlist">
+                         
                             <Button className="buttonwish" variant="contained"onClick={() => { addToWish(props.info) }}>
                                 Wishlist
                             </Button>
-                            </Link>
+                           
                         </>
                         :
                         <Button className="buttonbag" variant="contained" fullWidth >

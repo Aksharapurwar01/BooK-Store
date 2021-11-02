@@ -41,9 +41,9 @@
 
 
 .css-96uuyl {
-    
+
     background-color: white !important;
-    width: 100% !important;
+    width: 450px !important;
 }
 
 .css-yz9k0d-MuiInputBase-input {
@@ -62,40 +62,56 @@
     fill: white !important;
 }
 
-.css-pwyk3z-MuiBadge-badge{
+.css-pwyk3z-MuiBadge-badge {
     background-color: white !important;
     color: black !important;
 }
 
 
-@media screen and (min-width: 600px) {
 
-    .css-96uuyl {
-        margin-left: 8%;
-        width: 500px !important;
-    }
 
-}
+
 
 @media screen and (max-width:450px) {
 
-    .right-header{
+    .right-header {
         margin-left: 0px;
         width: 10%;
     }
 
     .css-96uuyl {
         margin-left: 0%;
-        width: 180px!important;
+        width: 200px !important;
     }
 
-    .header-title{
+    .header-title {
         margin-left: 0%;
         width: 10%;
     }
 
-    .book-text{
+    .book-text {
         display: none;
     }
-    
+
 }
+
+@media screen and (max-width: 770px) {
+
+    .right-header {
+        margin-left: 0px;
+        width: 10%;
+    }
+
+    .css-96uuyl {
+        margin-left: 2%;
+       
+    }
+
+    .header-title {
+        margin-left: 10%;
+        width: 10%;
+    }
+
+}
+
+
