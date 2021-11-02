@@ -213,7 +213,9 @@ export class Cartt extends Component {
                             <div className="minus" onClick={()=>this.decrease(value._id, value.quantityToBuy)}>-</div>
                             <div className="count">{value.quantityToBuy}</div>
                             <div className="plus" onClick={()=>this.increase(value._id, value.quantityToBuy)}>+</div>
+                            
                             <div className="remove" onClick={() => this.removeCart(value._id)}>Remove</div>
+                           
                         </div>
 
                     </div>

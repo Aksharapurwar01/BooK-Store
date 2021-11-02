@@ -69,6 +69,8 @@ $border: 1px solid #d9cccc;
     padding: 10px;
 }
 
+
+
 @media only screen and (max-width:770px) {
     .delelte_content {
         margin-left: 380px;
@@ -79,6 +81,14 @@ $border: 1px solid #d9cccc;
 @media only screen and (max-width:450px) {
     .delelte_content {
         margin-left: 100px;
+    }
+}
+
+@media only screen and (max-width:375px) {
+    .delelte_content {
+        margin-left: 80px;
+        justify-content: center;
+        
     }
 }
 

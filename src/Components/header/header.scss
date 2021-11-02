@@ -43,7 +43,7 @@
 .css-96uuyl {
 
     background-color: white !important;
-    width: 450px !important;
+    width: 500px !important;
 }
 
 .css-yz9k0d-MuiInputBase-input {
@@ -67,6 +67,43 @@
     color: black !important;
 }
 
+@media screen and (max-width: 1024px) {
+
+    .right-header {
+        margin-left: 10%;
+        width: 10%;
+    }
+
+
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .right-header {
+        margin-left: 10%;
+        width: 10%;
+    }
+
+    .css-96uuyl {
+      
+        width: 350px !important;
+
+    }
+
+    .header-title {
+        margin-left: 10%;
+        width: 10%;
+    }
+
+}
+
+// @media screen and (min-width: 600px){
+//     .css-96uuyl{
+//     margin-left: 24px;
+//     width: 100% !important;
+//     }
+// }
 
 
 
@@ -75,13 +112,13 @@
 @media screen and (max-width:450px) {
 
     .right-header {
-        margin-left: 0px;
+        margin-left: 20px;
         width: 10%;
     }
 
     .css-96uuyl {
         margin-left: 0%;
-        width: 200px !important;
+        width: 250px !important;
     }
 
     .header-title {
@@ -95,23 +132,17 @@
 
 }
 
-@media screen and (max-width: 770px) {
+
+@media screen and (max-width: 375px) {
 
     .right-header {
-        margin-left: 0px;
+        margin-left: 2px;
         width: 10%;
     }
 
     .css-96uuyl {
-        margin-left: 2%;
-       
-    }
-
-    .header-title {
-        margin-left: 10%;
-        width: 10%;
+        margin-left: 0%;
+        width: 200px !important;
     }
 
 }
-
-

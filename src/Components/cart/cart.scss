@@ -186,6 +186,7 @@ $border: 1px solid #d9cccc;
     display: flex;
     margin: 2px;
     width: 100%;
+    flex-direction: row;
     .minus {
         @include flex(flex, center, null, 20px, 20px, null);
         border: $border;
@@ -289,5 +290,31 @@ $border: 1px solid #d9cccc;
     .cart-bookAuthor{
         font-size: 12px;
     }
-}
 
+    .count_content .remove {
+        cursor: pointer;
+        margin-left: 2px;
+        font-size: 10px;
+    }
+
+    .count_content .minus {
+      
+        height: 15px;
+        width: 10px;
+      
+        border-radius: 15px;
+        font-size: 20px;
+       
+    }
+
+}
+@media screen and (max-width:375px) {
+
+    
+    .count_content .remove {
+        cursor: pointer;
+        margin-left: 2px;
+       
+    }
+
+}

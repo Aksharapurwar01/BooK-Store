@@ -104,7 +104,7 @@ export default function PrimarySearchAppBar(props) {
             onClose={handleMenuClose}
         >
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            <Link style={{textDecoration:"none"}} to="/wishlist"><MenuItem onClick={handleMenuClose}>My Wishlist</MenuItem></Link>
         </Menu>
     );
 
@@ -181,12 +181,24 @@ export default function PrimarySearchAppBar(props) {
                     </div>
                     <div className="right-header">
                         <div className="profile">
-                        <Link to={'/wishlist'}><FavoriteIcon/></Link>
-                           
+                            
+                                <IconButton
+                                    size="large"
+                                    edge="end"
+                                    aria-label="account of current user"
+                                    aria-controls={menuId}
+                                    aria-haspopup="true"
+                                    onClick={handleProfileMenuOpen}
+                                    color="inherit"
+                                >
+                                    <AccountCircle />
+                                </IconButton>
+                            
+
                         </div>
                         <div className="cart">
                             <Badge badgeContent={5} color="success">
-                               
+
                                 <Link to={'/cart'}><ShoppingCartOutlinedIcon /></Link>
 
                             </Badge>
